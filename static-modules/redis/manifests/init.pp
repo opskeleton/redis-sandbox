@@ -6,24 +6,16 @@
 #
 # Document parameters here.
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [*append*]
+#  Enables aof persistency
 #
 # === Variables
 #
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if it
-#   has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should not be used in preference to class parameters  as of
-#   Puppet 2.6.)
-#
 # === Examples
 #
-#  class { redis: }
+#  class {redis:
+#    append => true
+#  }
 #
 # === Authors
 #
@@ -33,7 +25,7 @@
 #
 # Copyright 2013 Ronen Narkis , unless otherwise noted.
 #
-class redis {
+class redis($append=false) {
   include apt
 
   apt::ppa { 'ppa:chris-lea/redis-server': }
@@ -41,5 +33,14 @@ class redis {
   package{'redis-server':
     ensure  => present,
     require => Apt::Ppa['ppa:chris-lea/redis-server']
+  }
+
+  if($append){
+    editfile::config { 'append true':
+      ensure => 'yes',
+      path   => '/etc/redis/redis.conf',
+      entry  => 'appendonly',
+      sep    => ' ',
+      }
   }
 }
