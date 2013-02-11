@@ -9,6 +9,7 @@ Vagrant::Config.run do |config|
     redis.vm.customize ['modifyvm', :id, '--memory', 2048, '--cpus', 4]
     redis.vm.host_name = 'redis'
     redis.vm.provision :puppet, :options => ["--modulepath=/vagrant/modules:/vagrant/static-modules"]
+    redis.vm.network :hostonly, "192.168.1.25"
   end
 
 end
