@@ -41,6 +41,20 @@ class redis($append=false) {
       path   => '/etc/redis/redis.conf',
       entry  => 'appendonly',
       sep    => ' ',
-      }
+      notify => Service['redis-server']
+    }
+  }
+  editfile::config { 'unbind local':
+    ensure => 'absent',
+    path   => '/etc/redis/redis.conf',
+    entry  => 'bind',
+    sep    => ' ',
+    notify => Service['redis-server']
+  }
+
+  service{'redis-server':
+    ensure    => running,
+    enable    => true,
+    hasstatus => true,
   }
 }
