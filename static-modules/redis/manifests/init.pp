@@ -37,19 +37,21 @@ class redis($append=false) {
 
   if($append){
     editfile::config { 'append true':
-      ensure => 'yes',
-      path   => '/etc/redis/redis.conf',
-      entry  => 'appendonly',
-      sep    => ' ',
-      notify => Service['redis-server']
+      ensure  => 'yes',
+      path    => '/etc/redis/redis.conf',
+      entry   => 'appendonly',
+      sep     => ' ',
+      notify  => Service['redis-server'],
+      require => Package['redis-server']
     }
   }
   editfile::config { 'unbind local':
-    ensure => 'absent',
-    path   => '/etc/redis/redis.conf',
-    entry  => 'bind',
-    sep    => ' ',
-    notify => Service['redis-server']
+    ensure  => 'absent',
+    path    => '/etc/redis/redis.conf',
+    entry   => 'bind',
+    sep     => ' ',
+    notify  => Service['redis-server'],
+    require => Package['redis-server']
   }
 
   service{'redis-server':
