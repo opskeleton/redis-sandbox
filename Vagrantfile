@@ -10,6 +10,7 @@ Vagrant::Config.run do |config|
     redis.vm.host_name = 'redis'
     redis.vm.provision :puppet, :options => ["--modulepath=/vagrant/modules:/vagrant/static-modules"]
     redis.vm.network :hostonly, "192.168.1.25"
+    redis.vm.forward_port 6397, 6397
   end
 
 end
