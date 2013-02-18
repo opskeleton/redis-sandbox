@@ -1,7 +1,7 @@
 group{ 'puppet': ensure  => present }
 
-node redis {
-  class{ 'redis':
-    append => true
-  }
-}
+# node redis {
+#   class{ 'redis':
+#     append => true
+#   }
+# }
