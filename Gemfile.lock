@@ -20,7 +20,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.2.2)
-    opskeleton (0.0.5)
+    opskeleton (0.1.0)
       thor
     puppet (3.1.0)
       facter (~> 1.6)
