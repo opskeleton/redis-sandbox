@@ -8,7 +8,7 @@ Vagrant::Config.run do |config|
     redis.vm.network :bridged
     redis.vm.customize ['modifyvm', :id, '--memory', 2048, '--cpus', 4]
     redis.vm.host_name = 'redis'
-    redis.vm.provision :puppet, :options => ["--modulepath=/vagrant/modules:/vagrant/static-modules"]
+    redis.vm.provision :puppet, :options => ["--modulepath=/vagrant/modules:/vagrant/static-modules", "--hiera_config /vagrant/hiera.yaml"]
     redis.vm.network :hostonly, "192.168.1.25"
     redis.vm.forward_port 6379, 6379
   end
