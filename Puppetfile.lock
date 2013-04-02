@@ -12,8 +12,16 @@ GIT
   specs:
     editfile (0.0.1)
 
+GIT
+  remote: git://github.com/narkisr/puppet-redis.git
+  ref: master
+  sha: e801f73fb31dde4dd39265b14d755bdac7da1fd6
+  specs:
+    redis (0.0.1)
+
 DEPENDENCIES
   editfile (>= 0)
   puppetlabs/apt (>= 0)
   puppetlabs/stdlib (>= 0)
+  redis (>= 0)
 
