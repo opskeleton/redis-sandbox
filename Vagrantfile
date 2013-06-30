@@ -2,8 +2,10 @@
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
 
+  bridge = ENV['VAGRANT_BRIGDE']
+  bridge ||= 'eth0'
   config.vm.box = 'ubuntu-12.10_puppet-3.1' 
-  config.vm.network :public_network
+  config.vm.network :public_network, :bridge => bridge
   config.vm.hostname = 'redis.local'
   config.vm.network :forwarded_port, guest: 6379, host: 6379
   config.vm.network :private_network, ip: "192.168.1.25"
