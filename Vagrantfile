@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
 
-  bridge = ENV['VAGRANT_BRIGDE']
+  bridge = ENV['VAGRANT_BRIDGE']
   bridge ||= 'eth0'
   config.vm.box = 'ubuntu-12.10_puppet-3.1' 
   config.vm.network :public_network, :bridge => bridge
