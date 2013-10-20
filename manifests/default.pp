@@ -1,6 +1,6 @@
 group{ 'puppet': ensure  => present }
 
-node redis {
+node default {
   class{ 'redis':
     append => true
   }
