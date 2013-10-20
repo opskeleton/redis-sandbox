@@ -1,9 +1,10 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
-    puppetlabs/apt (1.2.0)
+    puppetlabs/apt (1.4.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/stdlib (4.1.0)
+    stahnma/epel (0.0.5)
 
 GIT
   remote: git://github.com/mstrauss/puppet-editfile.git
@@ -15,7 +16,7 @@ GIT
 GIT
   remote: git://github.com/narkisr/puppet-redis.git
   ref: master
-  sha: 8c8185b96c711c70f95ffb9218d141c95c1a5409
+  sha: 4cf26b53f9bd634949c1914e4a134b2cbe529360
   specs:
     redis (0.0.1)
 
@@ -24,4 +25,5 @@ DEPENDENCIES
   puppetlabs/apt (>= 0)
   puppetlabs/stdlib (>= 0)
   redis (>= 0)
+  stahnma/epel (>= 0)
 

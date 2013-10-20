@@ -9,3 +9,5 @@ mod 'editfile',
 
 mod 'redis', 
    :git => 'git://github.com/narkisr/puppet-redis.git'
+
+mod 'stahnma/epel' 
