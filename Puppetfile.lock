@@ -16,7 +16,7 @@ GIT
 GIT
   remote: git://github.com/narkisr/puppet-redis.git
   ref: master
-  sha: 4cf26b53f9bd634949c1914e4a134b2cbe529360
+  sha: 4b033ad90847afa98ca37e777c6b06e4d677a4d0
   specs:
     redis (0.0.1)
 
