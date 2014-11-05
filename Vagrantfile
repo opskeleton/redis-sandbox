@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   bridge ||= 'eth0'
 
   config.vm.define :ubuntu do |ubuntu|
-    ubuntu.vm.box = 'ubuntu-14.04_puppet-3.6.1' 
+    ubuntu.vm.box = 'ubuntu-14.04.1_puppet-3.7.0' 
     ubuntu.vm.network :public_network, :bridge => bridge
     ubuntu.vm.hostname = 'ubuntu-redis.local'
     ubuntu.vm.network :forwarded_port, guest: 6379, host: 6379
