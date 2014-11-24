@@ -2,10 +2,10 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.2.8)
-    activemodel (4.1.7)
-      activesupport (= 4.1.7)
+    activemodel (4.1.8)
+      activesupport (= 4.1.8)
       builder (~> 3.1)
-    activesupport (4.1.7)
+    activesupport (4.1.8)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -41,11 +41,11 @@ GEM
       puppet_forge
       rsync
     mime-types (2.4.3)
-    minitest (5.4.2)
+    minitest (5.4.3)
     multi_json (1.10.1)
     multipart-post (2.0.0)
     netrc (0.8.0)
-    opskeleton (0.7.0)
+    opskeleton (0.7.3)
       bintray_deploy
       thor
     puppet (3.7.3)
