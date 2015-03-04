@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   bridge ||= 'eth0'
 
   config.vm.define :ubuntu do |ubuntu|
-    ubuntu.vm.box = 'ubuntu-14.04.1_puppet-3.7.0' 
+    ubuntu.vm.box = 'ubuntu-14.10_puppet-3.7.3' 
     ubuntu.vm.network :public_network, :bridge => bridge
     ubuntu.vm.hostname = 'ubuntu-redis.local'
     ubuntu.vm.network :forwarded_port, guest: 6379, host: 6379
@@ -25,6 +25,14 @@ Vagrant.configure("2") do |config|
     ubuntu.vm.provider :virtualbox do |vb|
 	vb.customize ['modifyvm', :id, '--memory', 2048, '--cpus', 2]
     end
+
+    ubuntu.vm.provider :libvirt do |domain|
+	domain.uri = 'qemu+unix:///system'
+	domain.host = "redis.local"
+	domain.memory = 2048
+	domain.cpus = 2
+    end
+
 
     ubuntu.vm.provision :shell, :inline => update
     ubuntu.vm.provision :puppet do |puppet|
@@ -43,6 +51,13 @@ Vagrant.configure("2") do |config|
 
     centos.vm.provider :virtualbox do |vb|
 	vb.customize ['modifyvm', :id, '--memory', 2048, '--cpus', 2]
+    end
+
+    centos.vm.provider :libvirt do |domain|
+	domain.uri = 'qemu+unix:///system'
+	domain.host = "redis.local"
+	domain.memory = 2048
+	domain.cpus = 2
     end
 
     centos.vm.provision :puppet do |puppet|

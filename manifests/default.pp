@@ -1,4 +1,3 @@
-group{ 'puppet': ensure  => present }
 
 node default {
   class{ 'redis':
