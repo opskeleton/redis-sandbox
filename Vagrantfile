@@ -19,8 +19,8 @@ Vagrant.configure("2") do |config|
     ubuntu.vm.box = 'ubuntu-14.10_puppet-3.7.3' 
     ubuntu.vm.network :public_network, :bridge => bridge
     ubuntu.vm.hostname = 'ubuntu-redis.local'
-    ubuntu.vm.network :forwarded_port, guest: 6379, host: 6379
-    ubuntu.vm.network :private_network, ip: "192.168.1.25"
+    # ubuntu.vm.network :forwarded_port, guest: 6379, host: 6379
+    ubuntu.vm.network :private_network, ip: "192.168.2.25"
 
     ubuntu.vm.provider :virtualbox do |vb|
 	vb.customize ['modifyvm', :id, '--memory', 2048, '--cpus', 2]
