@@ -25,11 +25,12 @@ Vagrant.configure("2") do |config|
     end
 
     ubuntu.vm.provider :libvirt do |domain, override|
+	override.vm.network :private_network, ip: '192.168.1.25'
+	override.vm.network :forwarded_port, guest: 6379, host: 6379
 	domain.uri = 'qemu+unix:///system'
 	domain.host = "redis.local"
 	domain.memory = 2048
 	domain.cpus = 2
-	override.vm.network :private_network, ip: "192.168.1.25"
     end
 
 
