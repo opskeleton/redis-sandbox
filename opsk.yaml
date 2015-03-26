@@ -7,7 +7,6 @@
     - manifests
     - hieradata
     - hiera.yaml
-    - static-modules
     - Gemfile
     - Gemfile.lock
     - opsk.yaml
