@@ -4,4 +4,3 @@ modules
 .tmp
 data
 pkg
-redis*
