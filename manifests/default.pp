@@ -1,7 +1,6 @@
-
 node default {
   class{'redis':
-    append          => true,
+    append => true,
   }
 
   redis::bind{'allow all':
