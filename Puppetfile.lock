@@ -3,7 +3,7 @@ FORGE
   specs:
     puppetlabs-apt (2.1.1)
       puppetlabs-stdlib (< 5.0.0, >= 4.5.0)
-    puppetlabs-stdlib (4.8.0)
+    puppetlabs-stdlib (4.9.0)
     stahnma-epel (1.1.1)
     thias-sysctl (1.0.2)
 
