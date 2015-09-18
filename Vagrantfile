@@ -15,19 +15,19 @@ Vagrant.configure("2") do |config|
   bridge = ENV['VAGRANT_BRIDGE']
   bridge ||= 'eth0'
 
-  config.vm.define :ubuntu do |ubuntu|
-    ubuntu.vm.box = 'ubuntu-14.10_puppet-3.7.3' 
+  config.vm.define :ubuntu, primary: true do |ubuntu|
+    ubuntu.vm.box = 'ubuntu-15.04_puppet-3.8.2' 
     ubuntu.vm.network :public_network, :bridge => bridge
+    ubuntu.vm.network :private_network, ip: '192.168.5.25'
     ubuntu.vm.hostname = 'ubuntu-redis.local'
 
     ubuntu.vm.provider :virtualbox do |vb,override|
-	override.vm.network :private_network, ip: '192.168.2.25'
 	override.vm.network :forwarded_port, guest: 6379, host: 6379
 	vb.customize ['modifyvm', :id, '--memory', 2048, '--cpus', 2]
     end
 
     ubuntu.vm.provider :libvirt do |domain, override|
-	override.vm.network :private_network, ip: '192.168.1.25'
+	override.vm.network :private_network, ip: '192.168.2.25'
 	override.vm.network :forwarded_port, guest: 6379, host: 6379
 	domain.uri = 'qemu+unix:///system'
 	domain.host = "redis.local"
@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :centos do |centos|
-    centos.vm.box = 'centos-6.3_puppet_3' 
+    centos.vm.box = 'vStone/centos-7.x-puppet.3.x' 
     centos.vm.network :public_network, :bridge => bridge
     centos.vm.hostname = 'centos-redis.local'
     centos.vm.network :forwarded_port, guest: 6379, host: 6380
