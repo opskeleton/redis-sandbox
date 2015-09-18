@@ -17,7 +17,7 @@ GIT
 GIT
   remote: git://github.com/pulling-strings/puppet-redis.git
   ref: master
-  sha: 70d8e22f7f0677d4ba416b166580604fe8a03f6e
+  sha: de722196fd8520af33c61bd4ef27447d8b4a1c67
   specs:
     strings-redis (0.0.1)
       puppetlabs-apt (>= 0)
