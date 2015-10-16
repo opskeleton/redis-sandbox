@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
     ubuntu.vm.network :public_network, :bridge => bridge
     ubuntu.vm.network :private_network, ip: '192.168.5.25'
     ubuntu.vm.hostname = 'ubuntu-redis.local'
+    ubuntu.vm.provider 'libvirt'
 
     ubuntu.vm.provider :virtualbox do |vb,override|
 	override.vm.network :forwarded_port, guest: 6379, host: 6379
@@ -33,6 +34,7 @@ Vagrant.configure("2") do |config|
 	domain.host = "redis.local"
 	domain.memory = 2048
 	domain.cpus = 2
+	override.vm.synced_folder './', '/vagrant', type: 'nfs'
     end
 
 
