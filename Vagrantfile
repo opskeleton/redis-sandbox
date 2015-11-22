@@ -12,13 +12,11 @@ SCRIPT
 
 Vagrant.configure("2") do |config|
 
-  bridge = ENV['VAGRANT_BRIDGE']
-  bridge ||= 'eth0'
+  device = ENV['VAGRANT_BRIDGE'] || 'eth0'
 
   config.vm.define :ubuntu, primary: true do |ubuntu|
     ubuntu.vm.box = 'ubuntu-15.04_puppet-3.8.2' 
-    ubuntu.vm.network :public_network, :bridge => bridge
-    ubuntu.vm.network :private_network, ip: '192.168.5.25'
+    ubuntu.vm.network :public_network, :bridge => device, :dev => device
     ubuntu.vm.hostname = 'ubuntu-redis.local'
     ubuntu.vm.provider 'libvirt'
 
@@ -28,7 +26,6 @@ Vagrant.configure("2") do |config|
     end
 
     ubuntu.vm.provider :libvirt do |domain, override|
-	override.vm.network :private_network, ip: '192.168.2.25'
 	override.vm.network :forwarded_port, guest: 6379, host: 6379
 	domain.uri = 'qemu+unix:///system'
 	domain.host = "redis.local"
@@ -48,7 +45,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :centos do |centos|
     centos.vm.box = 'vStone/centos-7.x-puppet.3.x' 
-    centos.vm.network :public_network, :bridge => bridge
+    centos.vm.network :public_network, :bridge => device, :dev => device
     centos.vm.hostname = 'centos-redis.local'
     centos.vm.network :forwarded_port, guest: 6379, host: 6380
     centos.vm.network :private_network, ip: "192.168.1.26"
