@@ -15,9 +15,7 @@ Vagrant.configure("2") do |config|
   device = ENV['VAGRANT_BRIDGE'] || 'eth0'
 
   config.vm.define :ubuntu, primary: true do |ubuntu|
-    ubuntu.vm.box = 'ubuntu-15.04_puppet-3.8.2' 
-    ubuntu.vm.network :public_network, :bridge => device, :dev => device
-    ubuntu.vm.hostname = 'ubuntu-redis.local'
+    ubuntu.vm.box = 'ubuntu-15.10_puppet-3.8.2' 
     ubuntu.vm.provider 'libvirt'
 
     ubuntu.vm.provider :virtualbox do |vb,override|
