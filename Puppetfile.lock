@@ -1,12 +1,12 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
-    puppetlabs-apt (2.2.1)
+    puppetlabs-apt (2.2.2)
       puppetlabs-stdlib (< 5.0.0, >= 4.5.0)
-    puppetlabs-stdlib (4.10.0)
+    puppetlabs-stdlib (4.11.0)
     stahnma-epel (1.2.2)
       puppetlabs-stdlib (>= 3.0.0)
-    thias-sysctl (1.0.2)
+    thias-sysctl (1.0.6)
 
 GIT
   remote: git://github.com/mstrauss/puppet-editfile.git
@@ -18,7 +18,7 @@ GIT
 GIT
   remote: git://github.com/pulling-strings/puppet-redis.git
   ref: master
-  sha: c09e42b5fd89bcdf95fd1c823e5f22e3049744c5
+  sha: fb2943139cbb7afa64f9e86e85728017f6502c58
   specs:
     strings-redis (0.0.1)
       puppetlabs-apt (>= 0)
