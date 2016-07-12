@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
     end
 
     ubuntu.vm.provider :libvirt do |domain, override|
-	override.vm.network :forwarded_port, guest: 6379, host: 6379, adapter: device
+	override.vm.network :forwarded_port, guest: 6379, host: 6379, adapter: 'eth0'
 	domain.uri = 'qemu+unix:///system'
 	domain.host = "redis.local"
 	domain.memory = 2048
@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :centos do |centos|
-    centos.vm.box = 'vStone/centos-7.x-puppet.3.x' 
+    centos.vm.box = 'vStone/centos-7.x-puppet.3.x'
     centos.vm.network :public_network, :bridge => device, :dev => device
     centos.vm.hostname = 'centos-redis.local'
     centos.vm.network :forwarded_port, guest: 6379, host: 6380
