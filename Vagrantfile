@@ -3,8 +3,7 @@
 #
 update = <<SCRIPT
 if [ ! -f /tmp/up ]; then
-  sudo sed -i.bak s/us.archive/il.archive/g /etc/apt/sources.list
-  sudo aptitude update 
+  sudo apt-get update
   touch /tmp/up
 fi
 SCRIPT
@@ -15,7 +14,7 @@ Vagrant.configure("2") do |config|
   device = ENV['VAGRANT_BRIDGE'] || 'eth0'
 
   config.vm.define :ubuntu, primary: true do |ubuntu|
-    ubuntu.vm.box = 'ubuntu-15.10_puppet-3.8.2' 
+    ubuntu.vm.box = 'ubuntu-16.04_puppet-3.8.7'
     ubuntu.vm.provider 'libvirt'
 
     ubuntu.vm.provider :virtualbox do |vb,override|
@@ -24,7 +23,7 @@ Vagrant.configure("2") do |config|
     end
 
     ubuntu.vm.provider :libvirt do |domain, override|
-	override.vm.network :forwarded_port, guest: 6379, host: 6379
+	override.vm.network :forwarded_port, guest: 6379, host: 6379, adapter: device
 	domain.uri = 'qemu+unix:///system'
 	domain.host = "redis.local"
 	domain.memory = 2048
