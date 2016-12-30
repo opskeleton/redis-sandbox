@@ -18,6 +18,7 @@ Vagrant.configure("2") do |config|
   device = ENV['VAGRANT_BRIDGE'] || 'eth0'
 
   config.vm.define :ubuntu, primary: true do |ubuntu|
+    ubuntu.vm.network :private_network, ip: '192.168.1.200'
     ubuntu.vm.box = 'ubuntu-16.04_puppet-3.8.7'
     ubuntu.vm.provider 'libvirt'
 
