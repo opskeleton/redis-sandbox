@@ -8,10 +8,6 @@ node default {
   }
 
   if $operatingsystem == 'Ubuntu' {
-    package{'software-properties-common':
-      ensure  => present
-    } -> Exec <||>
-
     Service {
       provider => systemd
     }
